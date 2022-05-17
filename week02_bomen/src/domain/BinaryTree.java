@@ -22,5 +22,15 @@ public class BinaryTree<E> {
 			if (this.leftTree != null) this.leftTree.printPreorder();
 			if (this.rightTree != null) this.rightTree.printPreorder();
 	}
+	public void printInOrder(){
+		if(this.leftTree!= null) this.leftTree.printInOrder();
+		System.out.print(this.data + " ");
+		if (this.rightTree != null) this.rightTree.printInOrder();
+	}
+	public void printPostorder(){
+		if(this.leftTree != null) this.leftTree.printPostorder();
+		if(this.rightTree != null) this. rightTree.printPostorder();
+		System.out.print(this.data + " ");
+	}
 
 }

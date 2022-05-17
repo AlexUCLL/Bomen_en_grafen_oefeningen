@@ -14,7 +14,7 @@ public class BinarySearchTreeDriver {
 		boom.addNode(9);
 
 		printBoomInfo(boom);
-
+		System.out.println();
 		
 	}
 

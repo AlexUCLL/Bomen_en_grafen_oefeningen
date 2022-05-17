@@ -44,5 +44,11 @@ public class BinaryTree<E>{
 	E searchGreatest(){
 		throw new UnsupportedOperationException("Should not be implemented, implement in BinarySearchTree file");
 	}
+	public boolean isLeaf(){
+		return this.leftTree == null && this.rightTree == null;
+	}
+	public void cleanUp() {
+		throw new UnsupportedOperationException("Should not be implemented, implement in BinarySearchTree file");
+	}
 
 }

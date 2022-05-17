@@ -24,9 +24,20 @@ public class WeightedGraph {
     public int[][] getPointerMatrix() {
         int[][] pointerMatrix = new int[getAantalKnopen()][getAantalKnopen()];
         double[][] DMatrix = this.gewichtenMatrix.clone();
-
-
-		return pointerMatrix;
+        for (int i = 0; i < DMatrix.length; i++) {
+            DMatrix[i] = DMatrix[i].clone();
+        }
+        for (int k = 0; k < getAantalKnopen(); k++) {
+            for (int i = 0; i < getAantalKnopen(); i++) {
+                for (int j = 0; j < getAantalKnopen(); j++) {
+                    if (DMatrix[i][k] + DMatrix[k][j] < DMatrix[i][j]) {
+                        DMatrix[i][j] = DMatrix[i][k] + DMatrix[k][j];
+                        pointerMatrix[i][j] = k + 1;
+                    }
+                }
+            }
+        }
+        return pointerMatrix;
 	}
 
 	public List<Integer> getShortestPath(int i, int j, int[][] pointer) {
