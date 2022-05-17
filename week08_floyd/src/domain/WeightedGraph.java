@@ -33,17 +33,35 @@ public class WeightedGraph {
                     if (DMatrix[i][k] + DMatrix[k][j] < DMatrix[i][j]) {
                         DMatrix[i][j] = DMatrix[i][k] + DMatrix[k][j];
                         pointerMatrix[i][j] = k + 1;
+
                     }
                 }
             }
         }
         return pointerMatrix;
+
 	}
 
 	public List<Integer> getShortestPath(int i, int j, int[][] pointer) {
-		List<Integer> res = new ArrayList<>();
-
-
+        List<Integer> res = new ArrayList<>();
+        
+        if (i == 0) {
+            res.add(j);
+            return res;
+        }
+        else if (j == 0) {
+            res.add(i);
+            return res;
+   
+        }
+        if (i == j) {
+            return res;
+        }
+        System.out.println("Van: " + i + " Naar: " + j);
+        int tussenknoop = pointer[i - 1][j - 1] ;
+        System.out.println("Tussenstation: " + tussenknoop);
+        res.addAll(getShortestPath(i, tussenknoop , pointer));
+        res.addAll(getShortestPath(tussenknoop, j, pointer));
 		return res;
 
 	}
